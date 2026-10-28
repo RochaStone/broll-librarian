@@ -1,0 +1,174 @@
+{
+ "source": "sample-clips",
+ "clips": [
+  {
+   "id": "sunrise-swim-3f9a1c",
+   "path": "sample-clips/IMG_0412.MOV",
+   "name": "IMG_0412.MOV",
+   "duration": 14.2,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/sunrise-swim-3f9a1c.svg"
+   ]
+  },
+  {
+   "id": "desk-morning-8b21d0",
+   "path": "sample-clips/IMG_0413.MOV",
+   "name": "IMG_0413.MOV",
+   "duration": 9.8,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/desk-morning-8b21d0.svg"
+   ]
+  },
+  {
+   "id": "phone-scroll-c07e44",
+   "path": "sample-clips/RPReplay_Final1.MOV",
+   "name": "RPReplay_Final1.MOV",
+   "duration": 21.0,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/phone-scroll-c07e44.svg"
+   ]
+  },
+  {
+   "id": "coffee-pour-5d10aa",
+   "path": "sample-clips/IMG_0419.MOV",
+   "name": "IMG_0419.MOV",
+   "duration": 7.1,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/coffee-pour-5d10aa.svg"
+   ]
+  },
+  {
+   "id": "market-walk-e4417b",
+   "path": "sample-clips/IMG_0431.MOV",
+   "name": "IMG_0431.MOV",
+   "duration": 18.6,
+   "width": 1920,
+   "height": 1080,
+   "orientation": "horizontal",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/market-walk-e4417b.svg"
+   ]
+  },
+  {
+   "id": "jar-on-shelf-a93c02",
+   "path": "sample-clips/IMG_0440.MOV",
+   "name": "IMG_0440.MOV",
+   "duration": 6.4,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/jar-on-shelf-a93c02.svg"
+   ]
+  },
+  {
+   "id": "forest-path-12ce9d",
+   "path": "sample-clips/IMG_0446.MOV",
+   "name": "IMG_0446.MOV",
+   "duration": 16.3,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/forest-path-12ce9d.svg"
+   ]
+  },
+  {
+   "id": "beach-kids-77bd3e",
+   "path": "sample-clips/IMG_0452.MOV",
+   "name": "IMG_0452.MOV",
+   "duration": 11.9,
+   "width": 1920,
+   "height": 1080,
+   "orientation": "horizontal",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/beach-kids-77bd3e.svg"
+   ]
+  },
+  {
+   "id": "talking-head-2a8f66",
+   "path": "sample-clips/IMG_0458.MOV",
+   "name": "IMG_0458.MOV",
+   "duration": 48.0,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/talking-head-2a8f66.svg"
+   ]
+  },
+  {
+   "id": "candle-evening-d5e09b",
+   "path": "sample-clips/IMG_0463.MOV",
+   "name": "IMG_0463.MOV",
+   "duration": 12.5,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/candle-evening-d5e09b.svg"
+   ]
+  },
+  {
+   "id": "venue-lights-9c34f1",
+   "path": "sample-clips/IMG_0470.MOV",
+   "name": "IMG_0470.MOV",
+   "duration": 25.7,
+   "width": 1920,
+   "height": 1080,
+   "orientation": "horizontal",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/venue-lights-9c34f1.svg"
+   ]
+  },
+  {
+   "id": "pocket-blur-60aa7d",
+   "path": "sample-clips/IMG_0475.MOV",
+   "name": "IMG_0475.MOV",
+   "duration": 3.2,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/pocket-blur-60aa7d.svg"
+   ]
+  }
+ ],
+ "failed": []
+}

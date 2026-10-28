@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "about": "Every clip gets one tag line with these fields. The tagger looks at the key frames and fills each one. The usable field starts at no. The tagger may say yes only when the frames show nothing that needs a second look, the privacy gate turns a yes into a no for screens, other people and children, and only a person can widen it again.",
+  "fields": {
+    "kind": {
+      "type": "enum",
+      "values": ["broll", "talking_head", "screen_recording", "unusable"],
+      "help": "broll = footage with no one talking to camera. talking_head = someone speaking to the lens (this is A-roll, kept apart from b-roll). screen_recording = a phone or computer screen. unusable = blurry, pocket footage, black frames."
+    },
+    "product": {
+      "type": "bool",
+      "help": "true when a product, offer or thing you sell is clearly in shot (a book, a jar, a laptop showing your own page)."
+    },
+    "place": {
+      "type": "enum",
+      "values": ["home", "workspace", "studio", "cafe", "outdoors_nature", "beach_water", "city_street", "venue_event", "travel_transit", "unknown"],
+      "help": "where it was filmed, as best the frames show. unknown is fine."
+    },
+    "people_present": {
+      "type": "enum",
+      "values": ["none", "me_only", "others", "children"],
+      "help": "who is in shot. me_only = only the owner of the camera roll. others = any other adult, even in the background. children = any child at all."
+    },
+    "mood": {
+      "type": "list",
+      "values": ["calm", "golden_hour", "cozy", "moody", "bright_clean", "playful", "luxe", "raw_candid", "focused", "celebratory", "night"],
+      "max": 3,
+      "help": "one to three moods. Advisory: moods are taste, so they never gate anything."
+    },
+    "motion": {
+      "type": "enum",
+      "values": ["static", "handheld", "pan", "walking", "timelapse", "slowmo"],
+      "help": "how the camera or the scene moves."
+    },
+    "reel_role": {
+      "type": "enum",
+      "values": ["opener", "texture", "transition", "proof_of_work", "lifestyle", "end_moment"],
+      "help": "where it could sit in a reel. Advisory: taggers agree on this least, so it ranks and never gates."
+    },
+    "usable": {
+      "type": "enum",
+      "values": ["no", "yes"],
+      "default": "no",
+      "help": "yes only when the clip could go public as it is: no other people, no children, no screens, no private papers, nothing you would not post. When unsure, no."
+    },
+    "quality": {
+      "type": "int",
+      "min": 1,
+      "max": 5,
+      "help": "1 = unwatchable, 3 = fine, 5 = sharp, well lit, well framed. Judge the footage, not the taste."
+    },
+    "notes": {
+      "type": "text",
+      "max_len": 200,
+      "help": "one plain line: what is in the clip, and why usable is no if it is."
+    }
+  },
+  "required": ["id", "kind", "place", "people_present", "usable", "quality"],
+  "consent_gate": {
+    "about": "Clips that show other people, children or a screen need consent before public use. The gate turns any yes on these into no, unless a person signs it off in overrides.json with a consent note.",
+    "kinds": ["screen_recording"],
+    "people": ["others", "children"]
+  },
+  "eval_gate": {
+    "about": "A cheaper crew model may run the fleet only if it passes every line here against the director's labels.",
+    "coverage": 1.0,
+    "kind": 0.9,
+    "people_present": 0.9,
+    "place": 0.7,
+    "quality_within_one": 0.85,
+    "permissive_usable_errors": 0
+  }
+}

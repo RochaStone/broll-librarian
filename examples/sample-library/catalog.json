@@ -1,0 +1,389 @@
+{
+ "made": "2026-10-28",
+ "taxonomy_version": 1,
+ "clips": [
+  {
+   "id": "sunrise-swim-3f9a1c",
+   "name": "IMG_0412.MOV",
+   "path": "sample-clips/IMG_0412.MOV",
+   "duration": 14.2,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/sunrise-swim-3f9a1c.svg"
+   ],
+   "kind": "broll",
+   "product": false,
+   "place": "beach_water",
+   "people_present": "none",
+   "mood": [
+    "calm",
+    "golden_hour"
+   ],
+   "motion": "static",
+   "reel_role": "opener",
+   "usable": "yes",
+   "quality": 5,
+   "notes": "Sunrise over flat water, no one in shot.",
+   "consent_needed": false,
+   "gate": "",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "desk-morning-8b21d0",
+   "name": "IMG_0413.MOV",
+   "path": "sample-clips/IMG_0413.MOV",
+   "duration": 9.8,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/desk-morning-8b21d0.svg"
+   ],
+   "kind": "broll",
+   "product": false,
+   "place": "workspace",
+   "people_present": "none",
+   "mood": [
+    "focused",
+    "cozy"
+   ],
+   "motion": "static",
+   "reel_role": "proof_of_work",
+   "usable": "yes",
+   "quality": 4,
+   "notes": "Laptop, mug and plant on a morning desk.",
+   "consent_needed": false,
+   "gate": "",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "phone-scroll-c07e44",
+   "name": "RPReplay_Final1.MOV",
+   "path": "sample-clips/RPReplay_Final1.MOV",
+   "duration": 21.0,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/phone-scroll-c07e44.svg"
+   ],
+   "kind": "screen_recording",
+   "product": false,
+   "place": "unknown",
+   "people_present": "none",
+   "mood": [
+    "focused"
+   ],
+   "motion": "static",
+   "reel_role": "texture",
+   "usable": "no",
+   "quality": 3,
+   "notes": "A phone screen with messages open.",
+   "consent_needed": true,
+   "gate": "consent needed",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "coffee-pour-5d10aa",
+   "name": "IMG_0419.MOV",
+   "path": "sample-clips/IMG_0419.MOV",
+   "duration": 7.1,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/coffee-pour-5d10aa.svg"
+   ],
+   "kind": "broll",
+   "product": false,
+   "place": "cafe",
+   "people_present": "none",
+   "mood": [
+    "cozy",
+    "bright_clean"
+   ],
+   "motion": "static",
+   "reel_role": "texture",
+   "usable": "yes",
+   "quality": 5,
+   "notes": "Coffee and steam in a white cup.",
+   "consent_needed": false,
+   "gate": "",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "market-walk-e4417b",
+   "name": "IMG_0431.MOV",
+   "path": "sample-clips/IMG_0431.MOV",
+   "duration": 18.6,
+   "width": 1920,
+   "height": 1080,
+   "orientation": "horizontal",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/market-walk-e4417b.svg"
+   ],
+   "kind": "broll",
+   "product": false,
+   "place": "city_street",
+   "people_present": "others",
+   "mood": [
+    "playful"
+   ],
+   "motion": "walking",
+   "reel_role": "transition",
+   "usable": "no",
+   "quality": 4,
+   "notes": "Busy street, other people walking past.",
+   "consent_needed": true,
+   "gate": "consent needed",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "jar-on-shelf-a93c02",
+   "name": "IMG_0440.MOV",
+   "path": "sample-clips/IMG_0440.MOV",
+   "duration": 6.4,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/jar-on-shelf-a93c02.svg"
+   ],
+   "kind": "broll",
+   "product": true,
+   "place": "home",
+   "people_present": "none",
+   "mood": [
+    "luxe",
+    "bright_clean"
+   ],
+   "motion": "static",
+   "reel_role": "proof_of_work",
+   "usable": "yes",
+   "quality": 4,
+   "notes": "Product jar on a shelf, label facing out.",
+   "consent_needed": false,
+   "gate": "",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "forest-path-12ce9d",
+   "name": "IMG_0446.MOV",
+   "path": "sample-clips/IMG_0446.MOV",
+   "duration": 16.3,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/forest-path-12ce9d.svg"
+   ],
+   "kind": "broll",
+   "product": false,
+   "place": "outdoors_nature",
+   "people_present": "none",
+   "mood": [
+    "calm",
+    "moody"
+   ],
+   "motion": "walking",
+   "reel_role": "lifestyle",
+   "usable": "yes",
+   "quality": 4,
+   "notes": "A path through trees at dusk.",
+   "consent_needed": false,
+   "gate": "",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "beach-kids-77bd3e",
+   "name": "IMG_0452.MOV",
+   "path": "sample-clips/IMG_0452.MOV",
+   "duration": 11.9,
+   "width": 1920,
+   "height": 1080,
+   "orientation": "horizontal",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/beach-kids-77bd3e.svg"
+   ],
+   "kind": "broll",
+   "product": false,
+   "place": "beach_water",
+   "people_present": "children",
+   "mood": [
+    "playful",
+    "bright_clean"
+   ],
+   "motion": "handheld",
+   "reel_role": "lifestyle",
+   "usable": "no",
+   "quality": 4,
+   "notes": "Two children playing on the sand.",
+   "consent_needed": true,
+   "gate": "consent needed",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "talking-head-2a8f66",
+   "name": "IMG_0458.MOV",
+   "path": "sample-clips/IMG_0458.MOV",
+   "duration": 48.0,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/talking-head-2a8f66.svg"
+   ],
+   "kind": "talking_head",
+   "product": false,
+   "place": "home",
+   "people_present": "me_only",
+   "mood": [
+    "focused"
+   ],
+   "motion": "static",
+   "reel_role": "opener",
+   "usable": "yes",
+   "quality": 4,
+   "notes": "Me talking to camera, good light.",
+   "consent_needed": false,
+   "gate": "",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "candle-evening-d5e09b",
+   "name": "IMG_0463.MOV",
+   "path": "sample-clips/IMG_0463.MOV",
+   "duration": 12.5,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/candle-evening-d5e09b.svg"
+   ],
+   "kind": "broll",
+   "product": false,
+   "place": "home",
+   "people_present": "none",
+   "mood": [
+    "cozy",
+    "night",
+    "calm"
+   ],
+   "motion": "static",
+   "reel_role": "end_moment",
+   "usable": "yes",
+   "quality": 5,
+   "notes": "A single candle, evening light.",
+   "consent_needed": false,
+   "gate": "",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "venue-lights-9c34f1",
+   "name": "IMG_0470.MOV",
+   "path": "sample-clips/IMG_0470.MOV",
+   "duration": 25.7,
+   "width": 1920,
+   "height": 1080,
+   "orientation": "horizontal",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/venue-lights-9c34f1.svg"
+   ],
+   "kind": "broll",
+   "product": false,
+   "place": "venue_event",
+   "people_present": "others",
+   "mood": [
+    "celebratory",
+    "night"
+   ],
+   "motion": "handheld",
+   "reel_role": "texture",
+   "usable": "no",
+   "quality": 3,
+   "notes": "Stage lights and a crowd.",
+   "consent_needed": true,
+   "gate": "consent needed",
+   "tagged": true,
+   "problems": []
+  },
+  {
+   "id": "pocket-blur-60aa7d",
+   "name": "IMG_0475.MOV",
+   "path": "sample-clips/IMG_0475.MOV",
+   "duration": 3.2,
+   "width": 1080,
+   "height": 1920,
+   "orientation": "vertical",
+   "fps": 30.0,
+   "has_audio": true,
+   "frames": [
+    "thumbs/pocket-blur-60aa7d.svg"
+   ],
+   "kind": "unusable",
+   "product": false,
+   "place": "unknown",
+   "people_present": "none",
+   "mood": [],
+   "motion": "handheld",
+   "reel_role": "texture",
+   "usable": "no",
+   "quality": 1,
+   "notes": "Pocket footage, nothing in frame.",
+   "consent_needed": false,
+   "gate": "marked unusable",
+   "tagged": true,
+   "problems": []
+  }
+ ],
+ "orphans": [],
+ "tag_file_errors": [],
+ "summary": {
+  "clips": 12,
+  "tagged": 12,
+  "not_tagged": 0,
+  "usable_yes": 7,
+  "consent_needed": 4,
+  "with_problems": 0,
+  "kinds": {
+   "broll": 9,
+   "screen_recording": 1,
+   "talking_head": 1,
+   "unusable": 1
+  }
+ }
+}

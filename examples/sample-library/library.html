@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>B-roll library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>/* B-roll library: a contact sheet of polaroids on cream paper over a plum ground (analog).
+   Defaults are the bundled example; style.json overrides the :root variables. */
+:root {
+  --ground: #50163C; --wine: #682047; --ink: #3B1230; --cream: #FFF7F4; --blush: #FFE3F1;
+  --candy: #FE9DCA; --marker: #C2246E; --plum: #50163C; --gold: #E9B949;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --label: "Bricolage Grotesque", system-ui, "Helvetica Neue", Arial, sans-serif;
+  --body: "Fraunces", Georgia, "Times New Roman", serif;
+  --mono: "DM Mono", ui-monospace, Menlo, Consolas, monospace;
+  --scrawl: "Permanent Marker", "Marker Felt", "Comic Sans MS", cursive;
+  --pixel: "Silkscreen", "Pixelify Sans", ui-monospace, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--ground);
+  background-image: radial-gradient(color-mix(in srgb, var(--cream) 5%, transparent) 1px, transparent 1px);
+  background-size: 6px 6px;
+  color: var(--ink);
+  font-family: var(--mono);
+}
+body.page { padding: 40px 16px 64px; }
+[hidden] { display: none !important; }
+
+.sheet {
+  position: relative; margin: 0 auto; max-width: 1080px; padding: 30px 32px 26px;
+  background-color: var(--cream);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1px);
+  background-size: 5px 5px;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 16px 34px rgba(0,0,0,.35); /* a print on a desk, neutral only */
+}
+.mast { position: relative; text-align: center; border-bottom: 2px solid var(--gold); padding-bottom: 14px; }
+.kicker { font-family: var(--label); font-weight: 800; letter-spacing: .16em; font-size: 12px; color: var(--wine); text-transform: uppercase; }
+.mast h1 { font-family: var(--serif); font-weight: 900; color: var(--wine); font-size: clamp(40px, 9vw, 84px); line-height: .92; letter-spacing: -.02em; margin: 8px 0 6px; }
+.for { font-family: var(--label); font-size: 15px; }
+.for b { font-weight: 800; }
+.stamp {
+  position: absolute; right: 4px; top: 6px; transform: rotate(7deg);
+  font-family: var(--mono); font-weight: 500; font-size: 12px; line-height: 1.25; letter-spacing: .1em; text-align: center;
+  color: var(--marker); border: 2px solid var(--marker); padding: 5px 9px; opacity: .85;
+}
+.stats { font-family: var(--mono); font-size: 13px; text-align: center; margin: 12px 0 4px; }
+.stats b { color: var(--wine); font-weight: 500; }
+
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin: 10px 0 16px; font-family: var(--label); }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.chiplabel { font-weight: 800; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--wine); }
+.chips button {
+  font: 800 12px var(--label); padding: 4px 11px; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+}
+.chips button[aria-pressed="true"] { background: var(--candy); border-color: var(--candy); }
+.chips button:focus-visible, .find input:focus-visible { outline: 2px solid var(--marker); outline-offset: 2px; }
+.find { display: flex; align-items: center; gap: 6px; }
+.find input { font: 13px var(--mono); padding: 4px 8px; border: 1.5px solid var(--ink); background: var(--cream); color: var(--ink); width: 150px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 22px 18px; padding: 8px 4px; }
+.clip {
+  position: relative; background: var(--blush); border: 1px solid color-mix(in srgb, var(--ink) 35%, transparent);
+  padding: 10px 10px 12px; box-shadow: 0 1px 2px rgba(0,0,0,.22), 0 6px 12px rgba(0,0,0,.14);
+}
+.m-analog .clip:nth-child(odd) { transform: rotate(-.9deg); }
+.m-analog .clip:nth-child(even) { transform: rotate(.7deg); }
+.thumb { position: relative; aspect-ratio: 3 / 4; background: var(--plum); border: 3px solid var(--plum); overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.noframe { display: grid; place-items: center; height: 100%; color: var(--cream); font-size: 12px; }
+.tape {
+  position: absolute; top: -9px; left: 50%; width: 64px; height: 20px; transform: translateX(-50%) rotate(-3deg);
+  background: color-mix(in srgb, var(--candy) 80%, transparent); border-left: 2px dotted color-mix(in srgb, var(--ink) 25%, transparent);
+  border-right: 2px dotted color-mix(in srgb, var(--ink) 25%, transparent);
+}
+.meta { padding-top: 8px; font-size: 12px; line-height: 1.35; }
+.cname { font-family: var(--label); font-weight: 800; font-size: 14px; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 8px; margin-top: 3px; }
+.kind { white-space: nowrap; font-family: var(--label); font-weight: 800; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--wine); }
+.len, .where { color: var(--ink); opacity: .8; }
+.rate { letter-spacing: 2px; color: var(--wine); margin-top: 2px; }
+.note { margin-top: 3px; font-family: var(--body); font-size: 12.5px; min-height: 2.7em; }
+.status { margin-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.status small { font-size: 10.5px; opacity: .75; }
+.pill {
+  font-family: var(--label); font-weight: 800; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 3px 10px; border: 1.5px solid var(--ink); border-radius: 999px; white-space: nowrap;
+}
+.pill.yes { background: var(--candy); border-color: var(--candy); }
+.empty { padding: 24px; text-align: center; grid-column: 1 / -1; }
+
+.foot { margin-top: 16px; text-align: center; }
+.scrawl { font-family: var(--scrawl); color: var(--marker); font-size: 30px; line-height: 1.1; transform: rotate(-3deg); display: inline-block; margin: 6px 0; }
+.credit { font-family: var(--label); font-weight: 600; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .75; margin-top: 4px; }
+
+/* Share card: exactly 1080 x 1350, eight clips */
+body.card { width: 1080px; height: 1350px; overflow: hidden; padding: 56px 60px; }
+body.card.m-analog .sheet { max-width: none; height: 1238px; padding: 34px 40px 26px; display: flex; flex-direction: column; }
+body.card.m-analog .kicker { font-size: 16px; }
+body.card.m-analog .mast h1 { font-size: 112px; }
+body.card.m-analog .for { font-size: 20px; }
+body.card.m-analog .stamp { font-size: 15px; right: 10px; top: 14px; }
+body.card.m-analog .stats { font-size: 17px; margin: 14px 0 6px; }
+body.card.m-analog .grid { flex: 1; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 26px 20px; padding: 14px 4px 4px; min-height: 0; }
+body.card.m-analog .clip { display: flex; flex-direction: column; min-height: 0; }
+body.card.m-analog .thumb { aspect-ratio: auto; flex: 1; min-height: 0; }
+body.card.m-analog .meta { font-size: 13.5px; }
+body.card.m-analog .cname { font-size: 16px; }
+body.card.m-analog .note { display: none; }
+body.card.m-analog .foot { margin-top: 8px; }
+body.card.m-analog .scrawl { font-size: 38px; margin: 0; }
+body.card.m-analog .credit { font-size: 13px; }
+
+@media (max-width: 560px) {
+  .sheet { padding: 20px 14px; }
+  .stamp { position: static; display: inline-block; transform: rotate(-2deg); margin-top: 10px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 16px 10px; }
+  .clip { padding: 7px 7px 9px; }
+  .find input { width: 120px; }
+}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,900;1,400;1,900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap">
+<style>:root { --ground: #50163C; --wine: #682047; --candy: #FE9DCA; --blush: #FFE3F1; --cream: #FFF7F4; --ink: #3B1230; --marker: #C2246E; --plum: #50163C; --gold: #E9B949; --serif: "Fraunces", Georgia, "Times New Roman", serif; --label: "Bricolage Grotesque", system-ui, "Helvetica Neue", Arial, sans-serif; --body: "Fraunces", Georgia, "Times New Roman", serif; --mono: "DM Mono", ui-monospace, Menlo, Consolas, monospace; --scrawl: "Permanent Marker", "Marker Felt", "Comic Sans MS", cursive; }</style></head>
+<body class="page m-analog">
+<main class="sheet frame" aria-label="b-roll library">
+  <header class="mast">
+    <div class="kicker">CONTACT SHEET · EVERY CLIP, TAGGED FOR REELS</div>
+    <h1>B-ROLL LIBRARY</h1><div class="for">for <b>Rocha</b></div>
+    <div class="stamp" aria-hidden="true">TAGGED<br>28 OCT 2026</div>
+  </header>
+  <p class="stats"><b>12</b> clips · <b>12</b> tagged · <b>7</b> ok to post · <b>4</b> need consent</p>
+  <div class="filters"><div class="chips" role="group" aria-label="show"><span class="chiplabel">show</span><button type="button" data-group="usable" data-value="all" aria-pressed="true">all</button><button type="button" data-group="usable" data-value="yes" aria-pressed="false">ok to post</button><button type="button" data-group="usable" data-value="no" aria-pressed="false">keep private</button></div><div class="chips" role="group" aria-label="kind"><span class="chiplabel">kind</span><button type="button" data-group="kind" data-value="all" aria-pressed="true">all</button><button type="button" data-group="kind" data-value="broll" aria-pressed="false">b-roll</button><button type="button" data-group="kind" data-value="screen_recording" aria-pressed="false">screen recording</button><button type="button" data-group="kind" data-value="talking_head" aria-pressed="false">talking head</button><button type="button" data-group="kind" data-value="unusable" aria-pressed="false">unusable</button></div><div class="chips" role="group" aria-label="place"><span class="chiplabel">place</span><button type="button" data-group="place" data-value="all" aria-pressed="true">all</button><button type="button" data-group="place" data-value="beach_water" aria-pressed="false">beach water</button><button type="button" data-group="place" data-value="cafe" aria-pressed="false">cafe</button><button type="button" data-group="place" data-value="city_street" aria-pressed="false">city street</button><button type="button" data-group="place" data-value="home" aria-pressed="false">home</button><button type="button" data-group="place" data-value="outdoors_nature" aria-pressed="false">outdoors nature</button><button type="button" data-group="place" data-value="unknown" aria-pressed="false">unknown</button><button type="button" data-group="place" data-value="venue_event" aria-pressed="false">venue event</button><button type="button" data-group="place" data-value="workspace" aria-pressed="false">workspace</button></div><label class="find"><span class="chiplabel">find</span><input id="find" type="search" placeholder="beach, desk, calm" autocomplete="off"></label><span id="shown" class="chiplabel" role="status"></span></div>
+  <div class="grid"><article class="clip" data-usable="yes" data-kind="broll" data-place="beach_water" data-text="img_0412.mov b-roll beach water nobody in shot sunrise over flat water, no one in shot. calm golden_hour">
+  <figure class="thumb"><img src="thumbs/sunrise-swim-3f9a1c.svg" alt="key frame from IMG_0412.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0412.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:14 · vertical</span></p>
+    <p class="where">beach water · nobody in shot</p>
+    <p class="rate" aria-label="quality 5 of 5">▮▮▮▮▮</p>
+    <p class="note">Sunrise over flat water, no one in shot.</p>
+    <p class="status"><span class="pill yes">ok to post</span></p>
+  </div>
+</article><article class="clip" data-usable="yes" data-kind="broll" data-place="workspace" data-text="img_0413.mov b-roll workspace nobody in shot laptop, mug and plant on a morning desk. focused cozy">
+  <figure class="thumb"><img src="thumbs/desk-morning-8b21d0.svg" alt="key frame from IMG_0413.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0413.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:09 · vertical</span></p>
+    <p class="where">workspace · nobody in shot</p>
+    <p class="rate" aria-label="quality 4 of 5">▮▮▮▮▯</p>
+    <p class="note">Laptop, mug and plant on a morning desk.</p>
+    <p class="status"><span class="pill yes">ok to post</span></p>
+  </div>
+</article><article class="clip" data-usable="no" data-kind="screen_recording" data-place="unknown" data-text="rpreplay_final1.mov screen recording unknown nobody in shot a phone screen with messages open. focused">
+  <figure class="thumb"><img src="thumbs/phone-scroll-c07e44.svg" alt="key frame from RPReplay_Final1.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">RPReplay_Final1.MOV</h3>
+    <p class="row"><span class="kind">screen recording</span><span class="len">0:21 · vertical</span></p>
+    <p class="where">unknown · nobody in shot</p>
+    <p class="rate" aria-label="quality 3 of 5">▮▮▮▯▯</p>
+    <p class="note">A phone screen with messages open.</p>
+    <p class="status"><span class="pill no">keep private</span><small>consent needed</small></p>
+  </div>
+</article><article class="clip" data-usable="yes" data-kind="broll" data-place="cafe" data-text="img_0419.mov b-roll cafe nobody in shot coffee and steam in a white cup. cozy bright_clean">
+  <figure class="thumb"><img src="thumbs/coffee-pour-5d10aa.svg" alt="key frame from IMG_0419.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0419.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:07 · vertical</span></p>
+    <p class="where">cafe · nobody in shot</p>
+    <p class="rate" aria-label="quality 5 of 5">▮▮▮▮▮</p>
+    <p class="note">Coffee and steam in a white cup.</p>
+    <p class="status"><span class="pill yes">ok to post</span></p>
+  </div>
+</article><article class="clip" data-usable="no" data-kind="broll" data-place="city_street" data-text="img_0431.mov b-roll city street other people busy street, other people walking past. playful">
+  <figure class="thumb"><img src="thumbs/market-walk-e4417b.svg" alt="key frame from IMG_0431.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0431.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:18 · horizontal</span></p>
+    <p class="where">city street · other people</p>
+    <p class="rate" aria-label="quality 4 of 5">▮▮▮▮▯</p>
+    <p class="note">Busy street, other people walking past.</p>
+    <p class="status"><span class="pill no">keep private</span><small>consent needed</small></p>
+  </div>
+</article><article class="clip" data-usable="yes" data-kind="broll" data-place="home" data-text="img_0440.mov b-roll home nobody in shot product jar on a shelf, label facing out. luxe bright_clean">
+  <figure class="thumb"><img src="thumbs/jar-on-shelf-a93c02.svg" alt="key frame from IMG_0440.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0440.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:06 · vertical</span></p>
+    <p class="where">home · nobody in shot</p>
+    <p class="rate" aria-label="quality 4 of 5">▮▮▮▮▯</p>
+    <p class="note">Product jar on a shelf, label facing out.</p>
+    <p class="status"><span class="pill yes">ok to post</span></p>
+  </div>
+</article><article class="clip" data-usable="yes" data-kind="broll" data-place="outdoors_nature" data-text="img_0446.mov b-roll outdoors nature nobody in shot a path through trees at dusk. calm moody">
+  <figure class="thumb"><img src="thumbs/forest-path-12ce9d.svg" alt="key frame from IMG_0446.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0446.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:16 · vertical</span></p>
+    <p class="where">outdoors nature · nobody in shot</p>
+    <p class="rate" aria-label="quality 4 of 5">▮▮▮▮▯</p>
+    <p class="note">A path through trees at dusk.</p>
+    <p class="status"><span class="pill yes">ok to post</span></p>
+  </div>
+</article><article class="clip" data-usable="no" data-kind="broll" data-place="beach_water" data-text="img_0452.mov b-roll beach water children in shot two children playing on the sand. playful bright_clean">
+  <figure class="thumb"><img src="thumbs/beach-kids-77bd3e.svg" alt="key frame from IMG_0452.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0452.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:11 · horizontal</span></p>
+    <p class="where">beach water · children in shot</p>
+    <p class="rate" aria-label="quality 4 of 5">▮▮▮▮▯</p>
+    <p class="note">Two children playing on the sand.</p>
+    <p class="status"><span class="pill no">keep private</span><small>consent needed</small></p>
+  </div>
+</article><article class="clip" data-usable="yes" data-kind="talking_head" data-place="home" data-text="img_0458.mov talking head home only me me talking to camera, good light. focused">
+  <figure class="thumb"><img src="thumbs/talking-head-2a8f66.svg" alt="key frame from IMG_0458.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0458.MOV</h3>
+    <p class="row"><span class="kind">talking head</span><span class="len">0:48 · vertical</span></p>
+    <p class="where">home · only me</p>
+    <p class="rate" aria-label="quality 4 of 5">▮▮▮▮▯</p>
+    <p class="note">Me talking to camera, good light.</p>
+    <p class="status"><span class="pill yes">ok to post</span></p>
+  </div>
+</article><article class="clip" data-usable="yes" data-kind="broll" data-place="home" data-text="img_0463.mov b-roll home nobody in shot a single candle, evening light. cozy night calm">
+  <figure class="thumb"><img src="thumbs/candle-evening-d5e09b.svg" alt="key frame from IMG_0463.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0463.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:12 · vertical</span></p>
+    <p class="where">home · nobody in shot</p>
+    <p class="rate" aria-label="quality 5 of 5">▮▮▮▮▮</p>
+    <p class="note">A single candle, evening light.</p>
+    <p class="status"><span class="pill yes">ok to post</span></p>
+  </div>
+</article><article class="clip" data-usable="no" data-kind="broll" data-place="venue_event" data-text="img_0470.mov b-roll venue event other people stage lights and a crowd. celebratory night">
+  <figure class="thumb"><img src="thumbs/venue-lights-9c34f1.svg" alt="key frame from IMG_0470.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0470.MOV</h3>
+    <p class="row"><span class="kind">b-roll</span><span class="len">0:25 · horizontal</span></p>
+    <p class="where">venue event · other people</p>
+    <p class="rate" aria-label="quality 3 of 5">▮▮▮▯▯</p>
+    <p class="note">Stage lights and a crowd.</p>
+    <p class="status"><span class="pill no">keep private</span><small>consent needed</small></p>
+  </div>
+</article><article class="clip" data-usable="no" data-kind="unusable" data-place="unknown" data-text="img_0475.mov unusable unknown nobody in shot pocket footage, nothing in frame.">
+  <figure class="thumb"><img src="thumbs/pocket-blur-60aa7d.svg" alt="key frame from IMG_0475.MOV" loading="lazy"><span class="tape" aria-hidden="true"></span></figure>
+  <div class="meta">
+    <h3 class="cname">IMG_0475.MOV</h3>
+    <p class="row"><span class="kind">unusable</span><span class="len">0:03 · vertical</span></p>
+    <p class="where">unknown · nobody in shot</p>
+    <p class="rate" aria-label="quality 1 of 5">▮▯▯▯▯</p>
+    <p class="note">Pocket footage, nothing in frame.</p>
+    <p class="status"><span class="pill no">keep private</span><small>marked unusable</small></p>
+  </div>
+</article></div>
+  <footer class="foot"><p class="scrawl">build your founder world</p><div class="credit">Rocha · @rocheverse · made with Rocha Coded</div></footer>
+</main><script>
+(function () {
+  var groups = {}, cards = [].slice.call(document.querySelectorAll(".clip")), q = document.getElementById("find");
+  function apply() {
+    var text = q ? q.value.trim().toLowerCase() : "", shown = 0;
+    cards.forEach(function (c) {
+      var ok = Object.keys(groups).every(function (g) { return groups[g] === "all" || c.dataset[g] === groups[g]; });
+      ok = ok && (!text || c.dataset.text.indexOf(text) > -1);
+      c.hidden = !ok; if (ok) shown++;
+    });
+    var n = document.getElementById("shown"); if (n) n.textContent = shown + " shown";
+  }
+  [].forEach.call(document.querySelectorAll(".chips button"), function (b) {
+    b.addEventListener("click", function () {
+      var g = b.dataset.group; groups[g] = b.dataset.value;
+      [].forEach.call(document.querySelectorAll('.chips button[data-group="' + g + '"]'), function (o) {
+        o.setAttribute("aria-pressed", o === b ? "true" : "false");
+      });
+      apply();
+    });
+  });
+  if (q) q.addEventListener("input", apply);
+})();
+</script></body></html>
