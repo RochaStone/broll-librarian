@@ -111,8 +111,8 @@ class TestShippedText(unittest.TestCase):
     def test_readme_footer_is_exact(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         brand = ("## Made by Rocha\n\nRocha \\\nBrand Alchemist & AI Architect \\\nAuthor of *Brand Alchemy in the Thriving Era* \\\n"
-                 "Creator of [Conscious Founder OS](https://founders.thrivingera.com) \\\nFounder, [Thriving Era Studio](https://thrivingera.com)\n\n"
-                 "I take female founders AI native in 7 days, and I build what they need next. \\\nStart with the audit: [thrivingera.com/audit](https://thrivingera.com/audit). \\\n"
+                 "Creator of [Conscious Founder Operating System](https://founders.thrivingera.com) \\\nFounder, [Thriving Era Studio](https://thrivingera.com)\n\n"
+                 "I help female founders build their founder world, and I build what they need next. \\\nStart with the audit: [thrivingera.com/audit](https://thrivingera.com/audit). \\\n"
                  "Or book an exploratory call: [calendly.com/rochelle-thrivingera/exploratory-call](https://calendly.com/rochelle-thrivingera/exploratory-call). "
                  "It is where we decide if we work together.\n\n"
                  "[Instagram @rocheverse](https://instagram.com/rocheverse) · [Substack](https://rochastone.substack.com) · "
